@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { Image, StyleSheet, View } from "react-native"
 import { ActionButton } from '../components/ActionButton'
-import { FokusButton } from '../components/FokusButton'
+import FokusButton from '../components/FokusButton'
 import Footer from "../components/Footer"
 import { IconPause, IconPlay } from '../components/Icons'
 import { Timer } from '../components/Timer'

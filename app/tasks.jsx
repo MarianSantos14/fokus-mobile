@@ -1,23 +1,50 @@
-import { Text, View } from "react-native";
-import TaskItem from "../components/TaskItem";
+import { StyleSheet, Text, View } from "react-native";
 import FokusButton from "../components/FokusButton";
+import { IconPlus } from "../components/Icons";
+import TaskItem from "../components/TaskItem";
+import { router } from "expo-router";
 
 export default function Tasks() {
     return (
-        <View>
-            <Text>
-                Lista de tarefas:
-            </Text>
-            <View>
-                <TaskItem
-                    completed
-                    text="estudar React"
-                />
-                <TaskItem
-                    text="estudar React-Native"
-                />
+        <View style={styles.container}>
+            <View style={styles.wrapper}>
+                <Text style={styles.text}>
+                    Lista de tarefas:
+                </Text>
+                <View style={styles.inner}>
+                    <TaskItem
+                        completed
+                        text="estudar React"
+                    />
+                    <TaskItem
+                        text="estudar React-Native"
+                    />
+                </View>
+                <FokusButton 
+                title='Adicionar nova tarefa' 
+                icon={<IconPlus autline />} 
+                onPress={() => router.navigate('/add-task') }/>
             </View>
-        <FokusButton title='Adicionar nova tarefa' />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#021123',
+        alignItems: 'center'
+    },
+    wrapper: {
+        gap: 40,
+        width: '90%'
+    },
+    text: {
+        textAlign: 'center',
+        color: '#fff',
+        fontSize: 26
+    },
+    inner: {
+        gap: 8
+    }
+})
