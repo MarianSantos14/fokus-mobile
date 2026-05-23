@@ -16,10 +16,10 @@ const TaskItem = ({ completed, text, onToggleComplete, onPressEdit, onPressDelet
             <Text style={styles.text}>
                 {text}
             </Text>
-            <Pressable onPress={onPressEdit}>
+            <Pressable onPress={onPressDelete}>
                 <IconTrash />
             </Pressable>
-            <Pressable onPress={onPressDelete}>
+            <Pressable onPress={onPressEdit}>
                 <IconPencil />
             </Pressable>
         </View>

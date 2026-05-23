@@ -14,7 +14,7 @@ const FokusButton = ({ onPress, title, icon, style, outline }) => {
 const styles = StyleSheet.create({
     button: {
         width: '100%',
-        padding: 8,
+        padding: 16,
         borderRadius: 32,
         flexDirection: 'row',
         alignItems: 'center',

@@ -76,7 +76,7 @@ export default function Pomodoro() {
       style={styles.container}
     >
       <Image style={styles.img} source={timerType.image} />
-      <View style={[styles.actions, { backgroundColor: timerType.color + '80' }, { borderColor: timerType.color }]} >
+      <View style={[styles.actions, { backgroundColor: timerType.color + '50' }, { borderColor: timerType.color }]} >
         <View style={styles.context} >
           {pomodoro.map(p => (
             <ActionButton
@@ -96,7 +96,7 @@ export default function Pomodoro() {
           style={{ backgroundColor: timerType.color }}
         />
       </View>
-      <Footer></Footer>
+      <Footer />
     </View>
   );
 }

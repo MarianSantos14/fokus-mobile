@@ -1,13 +1,42 @@
-import { createContext, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createContext, useEffect, useState } from "react";
 
 export const TaskContent = createContext()
+const TASKS_STORAGE_KEY = 'fokus-tasks'
 
-export function TasksProvider({children}) {
+export function TasksProvider({ children }) {
     const [tasks, setTasks] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const jsonValue = await AsyncStorage.getItem(TASKS_STORAGE_KEY);
+                const loadedData = jsonValue != null ? JSON.parse(jsonValue) : [];
+                setTasks(loadedData)
+                setIsLoaded(true)
+            } catch (erro) {
+                // error reading value
+            }
+        };
+        getData()
+    }, [])
+
+    useEffect(() => {
+        const storeData = async (value) => {
+            try {
+                const jsonValue = JSON.stringify(value);
+                await AsyncStorage.setItem(TASKS_STORAGE_KEY, jsonValue);
+            } catch (e) {
+                // saving error
+            }
+        };
+        if (isLoaded) {
+            storeData(tasks)
+        }
+    }, [tasks])
 
     const addTask = (description) => {
-        console.log('tarefa adicionada');
-        
         setTasks(oldState => {
             return [
                 ...oldState,
@@ -30,10 +59,19 @@ export function TasksProvider({children}) {
         })
     }
 
-    const deleteTasks = (id) => {
+    const deleteTask = (id) => {
+        setTasks(oldState => {
+            return oldState.filter(t => t.id !== id)
+        })
+    }
+
+    const editTask = (id, description) => {
         setTasks(oldState => {
             return oldState.map(t => {
-                return oldState.filter(t => t.id !== id)
+                if (t.id === id) {
+                    t.description = description
+                }
+                return t
             })
         })
     }
@@ -43,7 +81,8 @@ export function TasksProvider({children}) {
             tasks,
             addTask,
             toggleTaskCompleted,
-            deleteTasks
+            deleteTask,
+            editTask
         }}>
             {children}
         </TaskContent.Provider>

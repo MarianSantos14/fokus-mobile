@@ -19,11 +19,26 @@ export default function Layout() {
                             drawerStyle: {
                                 backgroundColor: '#021123'
                             },
-                            drawerLabelStyle: {
-                                color: '#fff'
-                            }
+
+                            drawerInactiveTintColor: '#fff',
+                            drawerActiveTintColor: '#B872FF',
+                            drawerActiveBackgroundColor: 'tranparent',
                         }}
                     >
+                        <Drawer.Screen
+                            name='pomodoro'
+                            options={{
+                                drawerLabel: 'Timer',
+                                title: ''
+                            }}
+                        />
+                        <Drawer.Screen
+                            name='tasks'
+                            options={{
+                                drawerLabel: 'Lista de tarefas',
+                                title: ''
+                            }}
+                        />
                         <Drawer.Screen
                             name='index'
                             options={{
@@ -48,17 +63,10 @@ export default function Layout() {
                             }}
                         />
                         <Drawer.Screen
-                            name='pomodoro'
+                            name='edit-task/[id]'
                             options={{
-                                drawerLabel: 'Timer',
-                                title: ''
-                            }}
-                        />
-                        <Drawer.Screen
-                            name='tasks'
-                            options={{
-                                drawerLabel: 'Lista de tarefas',
-                                title: ''
+                                drawerItemStyle: { display: 'none' },
+                                title: '',
                             }}
                         />
                     </Drawer>

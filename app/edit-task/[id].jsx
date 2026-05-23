@@ -1,21 +1,30 @@
-import { Keyboard, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
-import { IconSave } from "../components/Icons";
-import useTaskContent from "../components/context/useTaskContent";
+import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
-import { router } from "expo-router";
-import Footer from "../components/Footer";
+import { Keyboard, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { IconSave } from "../../components/Icons";
+import useTaskContent from "../../components/context/useTaskContent";
+import { useEffect } from "react";
+import Footer from "../../components/Footer";
 
-export default function AddTasks() {
+export default function EditTask() {
+    const { id } = useLocalSearchParams()
+
     const [description, setDescription] = useState('')
+    const { tasks, editTask } = useTaskContent()
 
-    const { addTask } = useTaskContent()
+    useEffect(() => {
+        const task = tasks.find(t => t.id === Number(id))
+        if (task) {
+            setDescription(task.description)
+        }
+    }, [id, tasks])
 
     const submitTask = () => {
         if (!description) {
-            return 
+            return
         }
 
-        addTask(description)
+        editTask(Number(id), description)
         setDescription('')
         router.navigate('/tasks')
     }
@@ -27,7 +36,7 @@ export default function AddTasks() {
         >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                 <View style={styles.container}>
-                    <Text style={styles.text} >Adicionar tarefa:</Text>
+                    <Text style={styles.text} >Editar tarefa:</Text>
 
                     <View style={styles.inner} >
                         <Text style={styles.label}>Em que que você está trabalhando?</Text>
