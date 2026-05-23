@@ -4,7 +4,7 @@ const FokusButton = ({ onPress, title, icon, style, outline }) => {
     return (
         <Pressable style={[styles.button, style, outline && styles.outlineButton]} onPress={onPress}>
             {icon}
-            <Text style={[styles.buttonText, outline && style.outlineButtonText]}>
+            <Text style={[styles.buttonText, outline && styles.outlineButtonText]}>
                 {title}
             </Text>
         </Pressable>
