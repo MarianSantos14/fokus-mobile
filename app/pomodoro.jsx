@@ -2,7 +2,6 @@ import { useRef, useState } from "react"
 import { Image, StyleSheet, View } from "react-native"
 import { ActionButton } from '../components/ActionButton'
 import FokusButton from '../components/FokusButton'
-import Footer from "../components/Footer"
 import { IconPause, IconPlay } from '../components/Icons'
 import { Timer } from '../components/Timer'
 
@@ -76,7 +75,7 @@ export default function Pomodoro() {
       style={styles.container}
     >
       <Image style={styles.img} source={timerType.image} />
-      <View style={[styles.actions, { backgroundColor: timerType.color + '50' }, { borderColor: timerType.color }]} >
+      <View style={[styles.actions, { backgroundColor: timerType.color + '40' }, { borderColor: timerType.color }]} >
         <View style={styles.context} >
           {pomodoro.map(p => (
             <ActionButton
@@ -96,7 +95,6 @@ export default function Pomodoro() {
           style={{ backgroundColor: timerType.color }}
         />
       </View>
-      <Footer />
     </View>
   );
 }
@@ -104,14 +102,14 @@ export default function Pomodoro() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: '#021123',
-    gap: 40
+    gap: 40,
+    paddingTop: 20
   },
   img: {
-    width: 350,
-    height: 350,
+    width: 290,
+    height: 290,
   },
   actions: {
     padding: 24,

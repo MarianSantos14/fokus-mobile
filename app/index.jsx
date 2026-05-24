@@ -14,7 +14,6 @@ export default function Index() {
       <FokusButton
         title='Quero iniciar!'
         onPress={() => router.replace('/pomodoro')} />
-      <Footer></Footer>
     </View>
   )
 }

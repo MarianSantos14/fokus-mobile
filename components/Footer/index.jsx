@@ -11,7 +11,12 @@ export default function Footer() {
 
 const styles = StyleSheet.create({
   footer: {
-    alignItems: 'center',
+    padding: 32,
+
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    zIndex: 1,
   },
   footerText: {
     textAlign: 'center',

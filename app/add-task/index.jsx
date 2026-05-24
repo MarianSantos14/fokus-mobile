@@ -1,9 +1,8 @@
-import { Keyboard, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
-import { IconSave } from "../components/Icons";
-import useTaskContent from "../components/context/useTaskContent";
-import { useState } from "react";
 import { router } from "expo-router";
-import Footer from "../components/Footer";
+import { useState } from "react";
+import { Keyboard, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { IconSave } from "../../components/Icons";
+import useTaskContent from "../../components/context/useTaskContent";
 
 export default function AddTasks() {
     const [description, setDescription] = useState('')
@@ -12,7 +11,7 @@ export default function AddTasks() {
 
     const submitTask = () => {
         if (!description) {
-            return 
+            return
         }
 
         addTask(description)
@@ -20,16 +19,29 @@ export default function AddTasks() {
         router.navigate('/tasks')
     }
 
+    const Wrapper = Platform.OS === 'web' ? View : TouchableWithoutFeedback;
+    const wrapperProps =
+        Platform.OS === 'web'
+            ? {}
+            : { onPress: Keyboard.dismiss };
+
+    const Container = Platform.OS === 'web' ? View : KeyboardAvoidingView;
+
+    const containerProps =
+        Platform.OS === 'web'
+            ? { style: { flex: 1,  backgroundColor: '#021123' }}
+            : {
+                style: { flex: 1 },
+                behavior: Platform.OS === 'ios' ? 'padding' : 'height',
+            };
+
     return (
-        <KeyboardAvoidingView
-            style={{ flex: 1 }}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+        <Container {...containerProps} >
+            <Wrapper {...wrapperProps}>
                 <View style={styles.container}>
                     <Text style={styles.text} >Adicionar tarefa:</Text>
 
-                    <View style={styles.inner} >
+                    <View style={styles.inner}>
                         <Text style={styles.label}>Em que que você está trabalhando?</Text>
                         <TextInput
                             style={styles.input}
@@ -37,19 +49,18 @@ export default function AddTasks() {
                             multiline={true}
                             value={description}
                             onChangeText={setDescription}
+                            blurOnSubmit={false}
                         />
-                        <View style={styles.actions}>
+                        <View style={styles.actions} >
                             <Pressable style={styles.button} onPress={submitTask}>
                                 <IconSave />
                                 <Text>Salvar</Text>
                             </Pressable>
                         </View>
                     </View>
-
-                    <Footer />
                 </View>
-            </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+            </Wrapper>
+        </Container>
     )
 }
 
@@ -91,6 +102,6 @@ const styles = StyleSheet.create({
     },
     actions: {
         flexDirection: 'row',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
     }
 })

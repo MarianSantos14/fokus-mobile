@@ -54,8 +54,6 @@ export default function EditTask() {
                             </Pressable>
                         </View>
                     </View>
-
-                    <Footer />
                 </View>
             </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
@@ -79,8 +77,7 @@ const styles = StyleSheet.create({
         width: '90%',
         borderRadius: 8,
         padding: 16,
-        gap: 32,
-        marginBottom: 32
+        gap: 32
     },
     label: {
         color: '#021123',

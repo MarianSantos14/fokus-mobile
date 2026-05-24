@@ -1,10 +1,9 @@
 import { router } from "expo-router";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import useTaskContent from "../components/context/useTaskContent";
-import FokusButton from "../components/FokusButton";
-import { IconPlus } from "../components/Icons";
-import TaskItem from "../components/TaskItem";
-import Footer from "../components/Footer"
+import useTaskContent from "../../components/context/useTaskContent";
+import FokusButton from "../../components/FokusButton";
+import { IconPlus } from "../../components/Icons";
+import TaskItem from "../../components/TaskItem";
 
 export default function Tasks() {
     const { tasks, deleteTask, toggleTaskCompleted } = useTaskContent()
@@ -38,7 +37,7 @@ export default function Tasks() {
                         }
                         ListFooterComponent={
                             <>
-                                <View style={{ marginTop: 32, marginBottom: 40 }}>
+                                <View style={{ marginTop: 32 }}>
                                     <FokusButton
                                         title='Adicionar nova tarefa'
                                         icon={<IconPlus outline />}
@@ -46,7 +45,6 @@ export default function Tasks() {
                                         onPress={() => router.navigate('/add-task')}
                                     />
                                 </View>
-                                <Footer />
                             </>
                         }
                     />
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
         gap: 8
     },
     text2: {
-        fontSize: 28,
+        fontSize: 24,
         fontWeight: 500,
         color: '#98A0A8',
         textAlign: 'center',
