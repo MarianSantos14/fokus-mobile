@@ -1,4 +1,4 @@
-![Páginas do projeto](docs\paginas.png)
+![Páginas do projeto](docs/paginas.png)
 
 <div align="center">
 
