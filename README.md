@@ -56,7 +56,7 @@ Opcional:
 
 <pre>
 <span style="color:#00bcd4;">git</span> clone https://github.com/MarianSantos14/fokus-mobile.git
-<span style="color:#00bcd4;">cd</span> seu-repo
+<span style="color:#00bcd4;">cd</span> fokus-mobile
 </pre>
 
 #### 2️⃣ Instale as dependências
