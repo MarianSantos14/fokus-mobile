@@ -11,6 +11,10 @@
 
 ### Sobre o projeto:
 
+O Fokus Mobile é um aplicativo desenvolvido para auxiliar na organização da rotina e no gerenciamento do tempo, combinando a técnica Pomodoro com uma lista de tarefas.
+
+A aplicação permite utilizar um temporizador para organizar períodos de foco e descanso, além de criar, visualizar e editar tarefas. O projeto também explora a navegação entre telas e o compartilhamento de estados entre componentes utilizando Context API.
+
 Este projeto faz parte da trilha:
 
 ![Alura](https://www.alura.com.br/assets/img/alura-logo.1647533643.svg)
@@ -21,6 +25,8 @@ Cursos envolvidos:
 
 * [React Native: desenvolvendo com Expo](https://cursos.alura.com.br/course/react-native-desenvolvendo-expo)
 * [React Native: navegando entre telas com Expo Router](https://cursos.alura.com.br/course/react-native-navegando-entre-telas-expo-router)
+
+Tecnologias principais: React Native, Expo, JavaScript, Expo Router e Context API.
 
 ---
 
